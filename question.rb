@@ -25,6 +25,10 @@ class Question
     data.map { |datum| Question.new(datum) }
   end
 
+  def self.most_followed(n)
+    QuestionFollows.most_followed_questions(n)
+  end
+
   attr_accessor :id, :title, :body, :author_user_id
 
   def initialize(data)
