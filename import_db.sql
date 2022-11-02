@@ -59,7 +59,10 @@ INSERT INTO questions (title, body, author_user_id)
 VALUES
 ("who?", "body1", 1),
 ("what?", "body2", 2),
-("when?", "body3", 3);
+("when?", "body3", 3),
+("where?", "body4", 1),
+("why?", "body5", 2),
+("whodunnit?", "body6", 3);
 
 INSERT INTO replies (body, question_id, parent_id, author_user_id)
 VALUES

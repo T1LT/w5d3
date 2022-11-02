@@ -12,6 +12,16 @@ class Question
     Question.new(data.first)
   end
 
+  def self.find_by_author_id(q_id)
+    data = QuestionsDB.instance.execute(<<-SQL, q_id)
+      SELECT *
+      FROM questions
+      WHERE author_user_id = ?
+    SQL
+    return nil unless data.length > 0
+    data.map { |datum| Question.new(datum) }
+  end
+
   attr_accessor :id, :title, :body, :author_user_id
 
   def initialize(data)
