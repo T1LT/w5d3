@@ -1,15 +1,15 @@
 require_relative "questions_db.rb"
 
-class Questions
+class Question
 
   def self.find_by_id(q_id)
     data = QuestionsDB.instance.execute(<<-SQL, q_id)
       SELECT *
       FROM questions
-      WHERE id = q_id
+      WHERE id = ?
     SQL
     return nil unless data.length > 0
-    Questions.new(data)
+    Question.new(data.first)
   end
 
   attr_accessor :id, :title, :body, :author_user_id

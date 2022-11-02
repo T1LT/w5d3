@@ -67,3 +67,19 @@ VALUES
 ("reply2", 1, null, 2),
 ("reply3", 1, null, 3),
 ("reply4", 1, 2, 1);
+
+INSERT INTO question_follows (question_id, user_id)
+VALUES
+(1,1),
+(2,2),
+(3,3),
+(2,1),
+(3,2);
+
+INSERT INTO question_likes (question_id, participant_user_id)
+VALUES
+(1,1),
+(2,2),
+(3,3),
+(2,1),
+(3,2);
