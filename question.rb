@@ -1,6 +1,7 @@
 require_relative "questions_db.rb"
 require_relative "reply.rb"
 require_relative "user.rb"
+require_relative "question_follows.rb"
 
 class Question
 
@@ -39,6 +40,10 @@ class Question
 
   def replies
     Reply.find_by_question_id(id)
+  end
+
+  def followers
+    QuestionFollows.followers_for_question_id(id)
   end
 
 end

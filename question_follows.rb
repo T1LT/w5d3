@@ -36,7 +36,7 @@ class QuestionFollows
       WHERE user_id = ?
     SQL
     return nil unless data.length > 0
-    data.map { |datum| User.new(datum) }
+    data.map { |datum| Question.new(datum) }
   end
 
   attr_accessor :names
