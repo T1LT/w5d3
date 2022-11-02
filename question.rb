@@ -1,4 +1,6 @@
 require_relative "questions_db.rb"
+require_relative "reply.rb"
+require_relative "user.rb"
 
 class Question
 
@@ -25,12 +27,18 @@ class Question
   attr_accessor :id, :title, :body, :author_user_id
 
   def initialize(data)
-
     @id = data["id"]
     @title = data["title"]
     @body = data["body"]
     @author_user_id = data["author_user_id"]
+  end
 
+  def author
+    User.find_by_id(@author_user_id)
+  end
+
+  def replies
+    Reply.find_by_question_id(id)
   end
 
 end
