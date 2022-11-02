@@ -39,6 +39,25 @@ class QuestionFollows
     data.map { |datum| Question.new(datum) }
   end
 
+  def self.most_followed_questions(n)
+    #select (stuff to make question objects)
+    #join questions + question_follows
+    #group by question_id
+    #order by COUNT(question_id)
+    #limit n
+
+    data = QuestionsDB.instance.execute(<<-SQL, n)
+      SELECT questions.id, questions.title, questions.body, questions.author_user_id
+      FROM questions
+      JOIN question_follows
+      ON questions.id = question_follows.question_id
+      GROUP BY question_id
+      ORDER BY COUNT(question_id) DESC
+      limit ?
+    SQL
+    data.length > 0 ? data.map { |datum| Question.new(datum) } : nil
+  end
+
   attr_accessor :names
 
   def initialize(data)
@@ -48,3 +67,4 @@ class QuestionFollows
   end
 
 end
+
