@@ -26,6 +26,13 @@ class QuestionLikes
     data.length > 0 ? data.map { |datum| User.new(datum) } : nil
   end
 
+  def self.num_likes_for_question_id(question_id)
+    data = QuestionsDB.instance.execute( <<-SQL, question_id )
+      SELECT COUNT(*) AS count FROM question_likes WHERE question_id = ? GROUP BY question_id ;
+    SQL
+    data[0]["count"]
+  end
+
   attr_accessor :names
 
   def initialize(data)
