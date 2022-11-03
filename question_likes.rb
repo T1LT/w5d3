@@ -44,6 +44,14 @@ class QuestionLikes
     data[0]["count"]
   end
 
+  def self.most_liked_questions(n)
+    # select distinct (question object)
+    # from question_likes join questions
+    # on question_likes.question_id = questions.id
+    # order by count(question_id) desc
+    # return array of question objects
+  end
+
   attr_accessor :names
 
   def initialize(data)

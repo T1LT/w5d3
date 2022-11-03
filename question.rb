@@ -30,6 +30,10 @@ class Question
     QuestionFollows.most_followed_questions(n)
   end
 
+  def self.most_liked(n)
+    
+  end
+
   attr_accessor :id, :title, :body, :author_user_id
 
   def initialize(data)
